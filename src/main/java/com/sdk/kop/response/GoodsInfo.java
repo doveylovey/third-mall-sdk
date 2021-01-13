@@ -19,27 +19,27 @@ public class GoodsInfo implements Serializable {
      */
     private Long goodsId;
     /**
-     * 基础信息
+     * 商品基础信息
      */
     private BaseInfo baseInfo;
     /**
-     * 类目信息
+     * 商品类目信息
      */
     private List<CategoryInfo> categoryInfo;
     /**
-     * 价格信息
+     * 商品价格信息
      */
     private PriceInfo priceInfo;
     /**
-     * 活动信息
+     * 商品活动信息
      */
     private ActivityInfo activityInfo;
     /**
-     * 佣金信息
+     * 商品佣金信息
      */
     private CommissionInfo commissionInfo;
     /**
-     * 跟踪链接
+     * 商品跟踪链接
      */
     private LinkInfo linkInfo;
 }

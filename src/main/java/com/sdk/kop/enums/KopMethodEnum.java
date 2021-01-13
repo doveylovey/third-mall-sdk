@@ -1,11 +1,11 @@
 package com.sdk.kop.enums;
 
 /**
- * 请求方法枚举类
+ * 考拉赚客请求方法枚举类
  *
  * @author Administrator
  */
-public enum MethodEnum {
+public enum KopMethodEnum {
     QUERY_RECOMMEND_GOODS_LIST("kaola.zhuanke.api.queryRecommendGoodsList", "获取推荐商品列表，每页 1000"),
     QUERY_SELECTED_GOODS("kaola.zhuanke.api.querySelectedGoods", "获取精选商品列表"),
     QUERY_GOODS_INFO("kaola.zhuanke.api.queryGoodsInfo", "根据商品 ID 查询商品信息"),
@@ -27,7 +27,7 @@ public enum MethodEnum {
     private String methodDesc;
 
 
-    MethodEnum(String methodName, String methodDesc) {
+    KopMethodEnum(String methodName, String methodDesc) {
         this.methodName = methodName;
         this.methodDesc = methodDesc;
     }

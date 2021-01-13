@@ -8,7 +8,7 @@ import lombok.Data;
  * @author Administrator
  */
 @Data
-public class KopSelectedGoodsResponse extends KopBaseResponse<SelectedGoods> {
+public class KopSelectedGoodsResponse extends BaseResponse<SelectedGoods> {
     private static final long serialVersionUID = -991985813689656508L;
 
 }

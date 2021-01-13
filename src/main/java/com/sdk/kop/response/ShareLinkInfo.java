@@ -5,24 +5,24 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 商品类目信息
+ * 转链列表
  *
  * @author Administrator
  */
 @Data
-public class CategoryInfo implements Serializable {
+public class ShareLinkInfo implements Serializable {
     private static final long serialVersionUID = 5021913920215994479L;
 
     /**
-     * 类目 id
+     * 原始链接
      */
-    private Long categoryId;
+    private String originalLink;
     /**
-     * 类目名
+     * 分享链接(原始长链)
      */
-    private String categoryName;
+    private String shareLink;
     /**
-     * 层级
+     * 分享短链
      */
-    private Integer level;
+    private String shortLink;
 }

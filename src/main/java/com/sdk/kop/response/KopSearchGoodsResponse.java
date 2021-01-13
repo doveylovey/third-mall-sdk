@@ -5,12 +5,12 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 获取推荐商品列表响应结果
+ * 商品搜索接口响应结果
  *
  * @author Administrator
  */
 @Data
-public class KopRecommendGoodsListResponse extends BaseResponse<List<Long>> {
+public class KopSearchGoodsResponse extends BaseResponse<List<SearchGoodsLinkInfo>> {
     private static final long serialVersionUID = -3731062229721189667L;
 
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @author Administrator
  */
 @Data
-public class KopGoodsInfoResponse extends KopBaseResponse<List<GoodsInfo>> {
+public class KopGoodsInfoResponse extends BaseResponse<List<GoodsInfo>> {
     private static final long serialVersionUID = -2944295262544505126L;
 
 }

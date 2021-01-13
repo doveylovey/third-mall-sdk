@@ -1,6 +1,7 @@
-# Project exclude paths
+# 指定不提交的目录
 /target/
 .idea/
 
+# 指定不提交的文件
 *.iml
 *.class

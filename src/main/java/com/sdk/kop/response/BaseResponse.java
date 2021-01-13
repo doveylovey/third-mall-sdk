@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Administrator
  */
 @Data
-public class KopBaseResponse<R> implements Serializable {
+public class BaseResponse<R> implements Serializable {
     private static final long serialVersionUID = -899281945370376206L;
 
     /**

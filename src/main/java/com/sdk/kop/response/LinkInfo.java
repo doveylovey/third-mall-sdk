@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 商品基础信息
+ * 商品跟踪链接
  *
  * @author Administrator
  */

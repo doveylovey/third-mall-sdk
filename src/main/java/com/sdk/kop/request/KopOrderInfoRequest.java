@@ -14,7 +14,7 @@ public class KopOrderInfoRequest implements Serializable {
     private static final long serialVersionUID = -991985813689656508L;
 
     /**
-     * 非必须。查询类型：1-根据下单时间段查询；2-根据订单号查询；3-根据更新时间查询
+     * 必须。查询类型：1-根据下单时间段查询；2-根据订单号查询；3-根据更新时间查询
      */
     private Integer type;
     /**

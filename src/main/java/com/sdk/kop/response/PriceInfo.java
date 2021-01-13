@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 商品基础信息
+ * 商品价格信息
  *
  * @author Administrator
  */
