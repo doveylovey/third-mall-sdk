@@ -7,7 +7,7 @@ import com.sdk.kop.request.KopGoodsInfoRequest;
 import com.sdk.kop.request.KopOrderInfoRequest;
 import com.sdk.kop.request.KopQueryActivityInfoRequest;
 import com.sdk.kop.request.KopQueryActivityOrderRequest;
-import com.sdk.kop.request.KopRecommendGoodsListRequest;
+import com.sdk.kop.request.KopRecommendGoodsRequest;
 import com.sdk.kop.request.KopSearchGoodsRequest;
 import com.sdk.kop.request.KopSelectedGoodsRequest;
 import com.sdk.kop.request.KopShareLinkRequest;
@@ -15,22 +15,18 @@ import com.sdk.kop.response.KopGoodsInfoResponse;
 import com.sdk.kop.response.KopOrderInfoResponse;
 import com.sdk.kop.response.KopQueryActivityInfoResponse;
 import com.sdk.kop.response.KopQueryActivityOrderResponse;
-import com.sdk.kop.response.KopRecommendGoodsListResponse;
+import com.sdk.kop.response.KopRecommendGoodsResponse;
 import com.sdk.kop.response.KopSearchGoodsResponse;
 import com.sdk.kop.response.KopSelectedGoodsResponse;
 import com.sdk.kop.response.KopShareLinkResponse;
 import com.sdk.kop.util.KopUtils;
 import org.apache.http.HttpStatus;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.net.URLEncoder;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -46,8 +42,8 @@ public class KopApiController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/queryRecommendGoodsList")
-    public KopRecommendGoodsListResponse queryRecommendGoodsList() throws Exception {
-        KopRecommendGoodsListRequest request = new KopRecommendGoodsListRequest();
+    public KopRecommendGoodsResponse queryRecommendGoodsList() throws Exception {
+        KopRecommendGoodsRequest request = new KopRecommendGoodsRequest();
         request.setSortType(1);
         request.setPageIndex(1);
         request.setPageSize(20);
@@ -58,13 +54,13 @@ public class KopApiController {
         initTreeMap.put("sign", sign);
         String url = KopConstants.SERVER + "?" + KopUtils.map2Url(initTreeMap);
         System.out.println("请求地址：" + url);
-        ResponseEntity<KopRecommendGoodsListResponse> responseEntity = restTemplate.postForEntity(url, null, KopRecommendGoodsListResponse.class);
+        ResponseEntity<KopRecommendGoodsResponse> responseEntity = restTemplate.postForEntity(url, null, KopRecommendGoodsResponse.class);
 //        HttpHeaders requestHeaders = new HttpHeaders();
 //        requestHeaders.add("Accept", "application/json;charset=UTF-8");
 //        HttpEntity<String> requestEntity = new HttpEntity<>(null, requestHeaders);
 //        ResponseEntity<KopRecommendGoodsListResponse> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, KopRecommendGoodsListResponse.class);
         if (responseEntity != null && HttpStatus.SC_OK == responseEntity.getStatusCode().value()) {
-            KopRecommendGoodsListResponse response = responseEntity.getBody();
+            KopRecommendGoodsResponse response = responseEntity.getBody();
             System.out.println("结果：" + JSON.toJSONString(response));
             System.out.println("状态码：" + response.getCode());
             System.out.println("信息：" + response.getMsg());

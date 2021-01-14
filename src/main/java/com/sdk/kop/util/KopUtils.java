@@ -276,7 +276,7 @@ public class KopUtils {
                 continue;
             }
             // 特别注意：使用 HttpClient 则需要对带空格的参数、值进行编码，而使用 RestTemplate 则不需要手动对其编码，RestTemplate 会自动对其编码
-            //value = URLEncoder.encode(value, "utf-8");
+            value = URLEncoder.encode(value, "utf-8");
             paramStr.append("&").append(key).append("=").append(value);
         }
         // 去掉第一个&

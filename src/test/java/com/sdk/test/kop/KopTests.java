@@ -2,29 +2,71 @@ package com.sdk.test.kop;
 
 import com.alibaba.fastjson.JSON;
 import com.sdk.kop.enums.KopMethodEnum;
-import com.sdk.kop.request.*;
-import com.sdk.kop.response.*;
+import com.sdk.kop.request.KopGoodsInfoRequest;
+import com.sdk.kop.request.KopOrderInfoRequest;
+import com.sdk.kop.request.KopQueryActivityInfoRequest;
+import com.sdk.kop.request.KopQueryActivityOrderRequest;
+import com.sdk.kop.request.KopRecommendGoodsRequest;
+import com.sdk.kop.request.KopSearchGoodsRequest;
+import com.sdk.kop.request.KopSelectedGoodsRequest;
+import com.sdk.kop.request.KopShareLinkRequest;
+import com.sdk.kop.response.KopGoodsInfoResponse;
+import com.sdk.kop.response.KopOrderInfoResponse;
+import com.sdk.kop.response.KopQueryActivityInfoResponse;
+import com.sdk.kop.response.KopQueryActivityOrderResponse;
+import com.sdk.kop.response.KopRecommendGoodsResponse;
+import com.sdk.kop.response.KopSearchGoodsResponse;
+import com.sdk.kop.response.KopSelectedGoodsResponse;
+import com.sdk.kop.response.KopShareLinkResponse;
 import com.sdk.kop.util.KopUtils;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author Administrator
  */
 public class KopTests {
+    /**
+     * 将一个 list 分割成多个固定大小的 list
+     */
+    @Test
+    public void test() {
+        // 分割后的每个 list 大小
+        int perListSize = 5;
+        List<String> srcList = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            srcList.add("list - " + i);
+        }
+        if (srcList == null || srcList.isEmpty()) {
+            srcList = Collections.emptyList();
+        }
+        List<List<String>> result = new ArrayList<>();
+        // 原 list 大小
+        int srcSize = srcList.size();
+        // 计算原 list 会被分割成几个小的 list
+        int subListCount = (srcSize + perListSize - 1) / perListSize;
+        for (int i = 0; i < subListCount; i++) {
+            List<String> subList = srcList.subList(i * perListSize, (i + 1) * perListSize > srcSize ? srcSize : perListSize * (i + 1));
+            result.add(subList);
+        }
+        System.out.println(result);
+    }
+
     @Test
     public void queryRecommendGoodsList() {
-        KopRecommendGoodsListRequest request = new KopRecommendGoodsListRequest();
+        KopRecommendGoodsRequest request = new KopRecommendGoodsRequest();
         request.setSortType(1);
         request.setPageIndex(1);
         request.setPageSize(20);
         try {
             String execute = KopUtils.doPost(request, KopMethodEnum.QUERY_RECOMMEND_GOODS_LIST.getMethodName());
             if (execute != null && !"".equals(execute.trim())) {
-                KopRecommendGoodsListResponse response = JSON.parseObject(execute, KopRecommendGoodsListResponse.class);
+                KopRecommendGoodsResponse response = JSON.parseObject(execute, KopRecommendGoodsResponse.class);
                 System.out.println("结果：" + JSON.toJSONString(response));
                 System.out.println("状态码：" + response.getCode());
                 System.out.println("信息：" + response.getMsg());
