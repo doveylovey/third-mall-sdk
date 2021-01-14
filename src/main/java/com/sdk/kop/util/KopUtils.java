@@ -1,5 +1,6 @@
 package com.sdk.kop.util;
 
+import com.alibaba.fastjson.JSON;
 import com.sdk.kop.constant.KopConstants;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
@@ -88,7 +90,7 @@ public class KopUtils {
     }
 
     /**
-     * 将当前日期时间格式化成 yyyy-MM-dd HH:mm:ss 形式
+     * 将指定日期时间格式化成 yyyy-MM-dd HH:mm:ss 形式
      *
      * @return
      */
@@ -154,6 +156,7 @@ public class KopUtils {
         try {
             // 由客户端发送 Post 请求得到响应结果
             response = httpClient.execute(httpPost);
+            System.out.println("响应结果：" + JSON.toJSONString(response));
             StatusLine statusLine = response.getStatusLine();
             System.out.println("响应状态：" + statusLine.toString());
             if (statusLine != null && HttpStatus.SC_OK == statusLine.getStatusCode()) {
@@ -162,7 +165,7 @@ public class KopUtils {
                 if (responseEntity != null) {
                     //System.out.println("响应内容长度为：" + responseEntity.getContentLength());
                     //System.out.println("响应内容为：" + EntityUtils.toString(responseEntity));
-                    return EntityUtils.toString(responseEntity, "GBK");
+                    return EntityUtils.toString(responseEntity, StandardCharsets.UTF_8);
                 }
             }
         } catch (ClientProtocolException e) {
@@ -272,7 +275,8 @@ public class KopUtils {
             if (value == null || "".equals(value.trim())) {
                 continue;
             }
-            value = URLEncoder.encode(value, "utf-8");
+            // 特别注意：使用 HttpClient 则需要对带空格的参数、值进行编码，而使用 RestTemplate 则不需要手动对其编码，RestTemplate 会自动对其编码
+            //value = URLEncoder.encode(value, "utf-8");
             paramStr.append("&").append(key).append("=").append(value);
         }
         // 去掉第一个&
