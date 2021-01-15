@@ -1,0 +1,268 @@
+[
+  {
+    "channel_id": 1,
+    "channel_name": "唯品会",
+    "channel_short_name": "vop",
+    "category": [
+      {
+        "category_id": "1",
+        "category_name": "女装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "2",
+        "category_name": "男装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3",
+        "category_name": "美妆精装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "4",
+        "category_name": "数码精选",
+        "parent_category_id": "0",
+        "status": 0,
+        "sort": null
+      },
+      {
+        "category_id": "5",
+        "category_name": "首饰精装",
+        "parent_category_id": "0",
+        "status": 0,
+        "sort": null
+      },
+      {
+        "category_id": "6",
+        "category_name": "鞋包精选",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "7",
+        "category_name": "母婴精装",
+        "parent_category_id": "0",
+        "status": 0,
+        "sort": null
+      },
+      {
+        "category_id": "8",
+        "category_name": "居家精选",
+        "parent_category_id": "0",
+        "status": 0,
+        "sort": null
+      },
+      {
+        "category_id": "9",
+        "category_name": "运动户外精选",
+        "parent_category_id": "0",
+        "status": 0,
+        "sort": null
+      },
+      {
+        "category_id": "10",
+        "category_name": "家用电器",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      }
+    ]
+  },
+  {
+    "channel_id": 2,
+    "channel_name": "淘宝",
+    "channel_short_name": "tb",
+    "category": [
+      {
+        "category_id": "3786",
+        "category_name": "精选",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3788",
+        "category_name": "女装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3792",
+        "category_name": "家居家装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3793",
+        "category_name": "数码家电",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3796",
+        "category_name": "鞋包配饰",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3794",
+        "category_name": "美妆个护",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3790",
+        "category_name": "男装",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3787",
+        "category_name": "内衣",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3789",
+        "category_name": "母婴",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3791",
+        "category_name": "食品",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "3795",
+        "category_name": "运动户外",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      }
+    ]
+  },
+  {
+    "channel_id": 5,
+    "channel_name": "考拉赚客",
+    "channel_short_name": "kop",
+    "category": [
+      {
+        "category_id": "110022",
+        "category_name": "宠物",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "9691",
+        "category_name": "服装鞋靴",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "381",
+        "category_name": "个人洗护",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "836",
+        "category_name": "环球美食",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "372",
+        "category_name": "家居生活",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "437",
+        "category_name": "美容彩妆",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "438",
+        "category_name": "母婴",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "8096",
+        "category_name": "汽车用品",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "8115",
+        "category_name": "生鲜",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "1092",
+        "category_name": "手表配饰",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "440",
+        "category_name": "数码家电",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "1025",
+        "category_name": "箱包",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "837",
+        "category_name": "医药健康",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      },
+      {
+        "category_id": "7578",
+        "category_name": "运动户外",
+        "parent_category_id": "0",
+        "status": 1,
+        "sort": null
+      }
+    ]
+  }
+]
