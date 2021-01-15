@@ -141,10 +141,7 @@ public class KopTests {
     @Test
     public void queryShareLink() {
         KopShareLinkRequest request = new KopShareLinkRequest();
-        List<String> list = Arrays.asList(
-                "https://goods.kaola.com/product/5246545.html",
-                "https://goods.kaola.com/product/8739206.html"
-        );
+        List<String> list = Arrays.asList("https://m-goods.kaola.com/product/8648899.html");
         request.setLinkList(JSON.toJSONString(list));
         try {
             String execute = KopUtils.doPost(request, KopMethodEnum.QUERY_SHARE_LINK.getMethodName());

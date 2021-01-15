@@ -55,10 +55,6 @@ public class KopApiController {
         String url = KopConstants.SERVER + "?" + KopUtils.map2Url(initTreeMap);
         System.out.println("请求地址：" + url);
         ResponseEntity<KopRecommendGoodsResponse> responseEntity = restTemplate.postForEntity(url, null, KopRecommendGoodsResponse.class);
-//        HttpHeaders requestHeaders = new HttpHeaders();
-//        requestHeaders.add("Accept", "application/json;charset=UTF-8");
-//        HttpEntity<String> requestEntity = new HttpEntity<>(null, requestHeaders);
-//        ResponseEntity<KopRecommendGoodsListResponse> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, KopRecommendGoodsListResponse.class);
         if (responseEntity != null && HttpStatus.SC_OK == responseEntity.getStatusCode().value()) {
             KopRecommendGoodsResponse response = responseEntity.getBody();
             System.out.println("结果：" + JSON.toJSONString(response));
@@ -128,8 +124,7 @@ public class KopApiController {
     @RequestMapping("/queryShareLink")
     public KopShareLinkResponse queryShareLink() throws Exception {
         KopShareLinkRequest request = new KopShareLinkRequest();
-        List<String> list = Arrays.asList("https://goods.kaola.com/product/5246545.html",
-                "https://goods.kaola.com/product/8739206.html");
+        List<String> list = Arrays.asList("https://goods.kaola.com/product/5246545.html", "https://goods.kaola.com/product/8739206.html");
         request.setLinkList(JSON.toJSONString(list));
         String execute = KopUtils.doPost(request, KopMethodEnum.QUERY_SHARE_LINK.getMethodName());
         if (execute != null && !"".equals(execute.trim())) {
@@ -149,9 +144,16 @@ public class KopApiController {
         request.setKeyWord("iPhone 12 Pro Max");
         request.setPageNo(1);
         request.setPageSize(20);
-        String execute = KopUtils.doPost(request, KopMethodEnum.SEARCH_GOODS.getMethodName());
-        if (execute != null && !"".equals(execute.trim())) {
-            KopSearchGoodsResponse response = JSON.parseObject(execute, KopSearchGoodsResponse.class);
+        TreeMap<String, String> initTreeMap = KopUtils.initCommonTreeMap(KopMethodEnum.SEARCH_GOODS.getMethodName());
+        TreeMap<String, String> requestTreeMap = KopUtils.obj2TreeMap(request);
+        initTreeMap.putAll(requestTreeMap);
+        String sign = KopUtils.createSign(KopConstants.APPSECRET, initTreeMap);
+        initTreeMap.put("sign", sign);
+        String url = KopConstants.SERVER + "?" + KopUtils.map2Url(initTreeMap);
+        System.out.println("请求地址：" + url);
+        ResponseEntity<KopSearchGoodsResponse> responseEntity = restTemplate.postForEntity(url, null, KopSearchGoodsResponse.class);
+        if (responseEntity != null && HttpStatus.SC_OK == responseEntity.getStatusCode().value()) {
+            KopSearchGoodsResponse response = responseEntity.getBody();
             System.out.println("结果：" + JSON.toJSONString(response));
             System.out.println("状态码：" + response.getCode());
             System.out.println("信息：" + response.getMsg());

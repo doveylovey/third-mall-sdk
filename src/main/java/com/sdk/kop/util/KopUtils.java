@@ -103,6 +103,16 @@ public class KopUtils {
     }
 
     /**
+     * 将指定日期时间转化成 LocalDateTime 对象
+     *
+     * @return
+     */
+    public static LocalDateTime str2DateTime(String string) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return LocalDateTime.parse("2018-01-12 17:07:05", formatter);
+    }
+
+    /**
      * 获取指定日期时间的秒值：10 位
      *
      * @param localDateTime
