@@ -25,7 +25,7 @@ public class RestTemplateConfig {
     public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         RestTemplate restTemplate = new RestTemplate(factory);
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
-        // 考拉赚客的 api 限制：请求限制：post，参数传输：拼接在 url 后，返回格式：json，header：【 Accept application/json; charset=UTF-8】
+        // 考拉海购的 api 限制：请求限制：post，参数传输：拼接在 url 后，返回格式：json，header：【 Accept application/json; charset=UTF-8】
         interceptors.add(new HeaderRequestInterceptor("Accept", "application/json; charset=UTF-8"));
         restTemplate.setInterceptors(interceptors);
         return restTemplate;

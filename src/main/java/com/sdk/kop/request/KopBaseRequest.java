@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 考拉赚客公用请求参数
+ * 考拉海购公用请求参数
  *
  * @author Administrator
  */
