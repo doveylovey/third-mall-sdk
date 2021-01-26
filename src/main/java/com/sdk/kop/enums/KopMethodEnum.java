@@ -1,7 +1,7 @@
 package com.sdk.kop.enums;
 
 /**
- * 考拉赚客请求方法枚举类
+ * 考拉海购请求方法枚举类
  *
  * @author Administrator
  */

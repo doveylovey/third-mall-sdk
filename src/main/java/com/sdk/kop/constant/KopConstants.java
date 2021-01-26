@@ -1,11 +1,15 @@
 package com.sdk.kop.constant;
 
 /**
- * 考拉赚客常量
+ * 考拉海购常量
  *
  * @author Administrator
  */
 public interface KopConstants {
+    /**
+     * 考拉海购请求成功后的状态码
+     */
+    Integer SUCCESS = 200;
     /**
      * 赚客 ID
      */

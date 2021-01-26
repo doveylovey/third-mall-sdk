@@ -24,14 +24,10 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
- * 考拉赚客工具类
+ * 考拉海购工具类
  *
  * @author Administrator
  */
@@ -109,7 +105,7 @@ public class KopUtils {
      */
     public static LocalDateTime str2DateTime(String string) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return LocalDateTime.parse("2018-01-12 17:07:05", formatter);
+        return LocalDateTime.parse(string, formatter);
     }
 
     /**
@@ -152,7 +148,7 @@ public class KopUtils {
         String sign = createSign(KopConstants.APPSECRET, initTreeMap);
         initTreeMap.put("sign", sign);
         // 参数
-        String params = map2Url(initTreeMap);
+        String params = map2Url(initTreeMap, true);
         // 创建 Post 请求
         String uri = KopConstants.SERVER + "?" + params;
         System.out.println("请求地址：" + uri);
@@ -272,21 +268,24 @@ public class KopUtils {
     /**
      * 将 Map 的 key、value 转化成请求的 url 字符串
      *
-     * @param source
+     * @param paramMap      参数
+     * @param needEncode 是否需要编码
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static String map2Url(Map<String, String> source) throws UnsupportedEncodingException {
-        Iterator<String> it = source.keySet().iterator();
+    public static String map2Url(Map<String, String> paramMap, Boolean needEncode) throws UnsupportedEncodingException {
+        Iterator<String> it = paramMap.keySet().iterator();
         StringBuilder paramStr = new StringBuilder();
         while (it.hasNext()) {
             String key = it.next();
-            String value = source.get(key);
+            String value = paramMap.get(key);
             if (value == null || "".equals(value.trim())) {
                 continue;
             }
-            // 特别注意：使用 HttpClient 则需要对带空格的参数、值进行编码，而使用 RestTemplate 则不需要手动对其编码，RestTemplate 会自动对其编码
-            value = URLEncoder.encode(value, "utf-8");
+            if (needEncode) {
+                // 特别注意：使用 HttpClient 则需要对带空格的参数、值进行编码，而使用 RestTemplate 则不需要手动对其编码，RestTemplate 会自动对其编码
+                value = URLEncoder.encode(value, "utf-8");
+            }
             paramStr.append("&").append(key).append("=").append(value);
         }
         // 去掉第一个&
