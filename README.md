@@ -3,4 +3,3 @@
 
 1、考拉海购 https://pub.kaola.com/development
 2、苏宁易购 http://sums.suning.com/openPlatform/index.html#/home
-1、考拉海购 https://pub.kaola.com/development
