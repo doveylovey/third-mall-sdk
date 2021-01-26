@@ -44,5 +44,56 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>-->
+
+
+        <!-- 第三方商城 dsk 开始 -->
+        <!-- 唯品会 dsk -->
+        <dependency>
+            <groupId>com.vip.web</groupId>
+            <artifactId>vip-sdk-java-osp</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/vip-sdk-java-osp-1.0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.vip.web</groupId>
+            <artifactId>vip-sdk-java-vop</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/vip-sdk-java-vop-1.0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <!-- 拼多多 dsk -->
+        <dependency>
+            <groupId>com.pdd.service</groupId>
+            <artifactId>pop-sdk</artifactId>
+            <version>1.9.43-all</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/pop-sdk-1.9.43-all.jar</systemPath>
+        </dependency>
+        <!-- 京东 dsk -->
+        <dependency>
+            <groupId>com.jd.cps</groupId>
+            <artifactId>jd-cps-client</artifactId>
+            <version>2.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/jd-cps-client-2.2.jar</systemPath>
+        </dependency>
+        <!-- 淘宝 dsk -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>taobao-sdk-java-auto</artifactId>
+            <version>20201023</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/taobao-sdk-java-auto-20201023.jar</systemPath>
+        </dependency>
+        <!-- 苏宁易购 sdk -->
+        <dependency>
+            <groupId>com.suning</groupId>
+            <artifactId>suning-sdk-java-standard</artifactId>
+            <version>20210122</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/suning-sdk-java-standard-20210122.jar</systemPath>
+        </dependency>
+        <!-- 第三方商城 dsk 结束 -->
     </dependencies>
 </project>

@@ -39,7 +39,7 @@ import java.util.TreeMap;
 @RequestMapping("/kop")
 public class KopApiController {
     @Resource
-    private RestTemplate restTemplate;
+    private RestTemplate kopClient;
 
     @RequestMapping("/queryRecommendGoodsList")
     public KopRecommendGoodsResponse queryRecommendGoodsList() throws Exception {
@@ -54,7 +54,7 @@ public class KopApiController {
         initTreeMap.put("sign", sign);
         String url = KopConstants.SERVER + "?" + KopUtils.map2Url(initTreeMap);
         System.out.println("请求地址：" + url);
-        ResponseEntity<KopRecommendGoodsResponse> responseEntity = restTemplate.postForEntity(url, null, KopRecommendGoodsResponse.class);
+        ResponseEntity<KopRecommendGoodsResponse> responseEntity = kopClient.postForEntity(url, null, KopRecommendGoodsResponse.class);
         if (responseEntity != null && HttpStatus.SC_OK == responseEntity.getStatusCode().value()) {
             KopRecommendGoodsResponse response = responseEntity.getBody();
             System.out.println("结果：" + JSON.toJSONString(response));
@@ -151,7 +151,7 @@ public class KopApiController {
         initTreeMap.put("sign", sign);
         String url = KopConstants.SERVER + "?" + KopUtils.map2Url(initTreeMap);
         System.out.println("请求地址：" + url);
-        ResponseEntity<KopSearchGoodsResponse> responseEntity = restTemplate.postForEntity(url, null, KopSearchGoodsResponse.class);
+        ResponseEntity<KopSearchGoodsResponse> responseEntity = kopClient.postForEntity(url, null, KopSearchGoodsResponse.class);
         if (responseEntity != null && HttpStatus.SC_OK == responseEntity.getStatusCode().value()) {
             KopSearchGoodsResponse response = responseEntity.getBody();
             System.out.println("结果：" + JSON.toJSONString(response));
