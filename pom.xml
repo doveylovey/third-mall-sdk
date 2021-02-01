@@ -92,7 +92,7 @@
             <artifactId>suning-sdk-java-standard</artifactId>
             <version>20210122</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/suning-sdk-java-standard-20210122.jar</systemPath>
+            <systemPath>${project.basedir}/libs/suning-sdk-java-standard-20210201.jar</systemPath>
         </dependency>
         <!-- 第三方商城 dsk 结束 -->
     </dependencies>
