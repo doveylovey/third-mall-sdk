@@ -1,8 +1,13 @@
 package com.sdk.test.suning;
 
+import com.alibaba.fastjson.JSON;
 import com.sdk.suning.client.SuningClientFactory;
+import com.sdk.suning.response.MyCommoditydetailQueryResponse;
+import com.sdk.suning.response.MySearchcommodityQueryResponse;
 import com.suning.api.entity.netalliance.CommoditycategoryQueryRequest;
 import com.suning.api.entity.netalliance.CommoditycategoryQueryResponse;
+import com.suning.api.entity.netalliance.CommoditydetailQueryRequest;
+import com.suning.api.entity.netalliance.CommoditydetailQueryResponse;
 import com.suning.api.entity.netalliance.CommodityimagesQueryRequest;
 import com.suning.api.entity.netalliance.CommodityimagesQueryResponse;
 import com.suning.api.entity.netalliance.CommoditypicsQueryRequest;
@@ -60,7 +65,7 @@ public class SuningCommodityTests {
         // 每页条数，默认10，最大支持40
         request.setSize("40");
         // 关键字
-        request.setKeyword("iPhone 12 Pro Max");
+        request.setKeyword("iPhone 12");
         // 销售目录ID
         //request.setSaleCategoryCode("R8231");
         // 排序规则：1-综合(默认)、2-销量由高到低、3-价格由高到低、4-价格由低到高、5-佣金比例由高到低、6-佣金金额由高到低、7-两个维度，佣金金额由高到低，销量由高到低、8-近30天推广量由高到低、9-近30天支出佣金金额由高到低
@@ -93,6 +98,10 @@ public class SuningCommodityTests {
         request.setCheckParam(true);
         try {
             SearchcommodityQueryResponse response = SuningClientFactory.getClient().excute(request);
+            if (response.getBody() != null) {
+                MySearchcommodityQueryResponse jsonRootBean = JSON.parseObject(response.getBody(), MySearchcommodityQueryResponse.class);
+                System.out.println(jsonRootBean);
+            }
             System.out.println("返回json/xml格式数据 :" + response.getBody());
         } catch (SuningApiException e) {
             e.printStackTrace();
@@ -141,6 +150,30 @@ public class SuningCommodityTests {
             SearchcommoditynewQueryResponse response = SuningClientFactory.getClient().excute(request);
             System.out.println("返回json/xml格式数据 :" + response.getBody());
         } catch (SuningApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testCommoditydetailQuery() {
+        // 推广商品详情信息接口
+        CommoditydetailQueryRequest request = new CommoditydetailQueryRequest();
+        //request.setCityCode("025");
+        request.setCommodityStr("12199227363-0070845864");
+        request.setCouponMark("1");
+        request.setPicHeight("200");
+        request.setPicWidth("200");
+        //api入参校验逻辑开关，当测试稳定之后建议设置为 false 或者删除该行
+        request.setCheckParam(true);
+        try {
+            CommoditydetailQueryResponse response = SuningClientFactory.getClient().excute(request);
+            if(response.getBody() != null){
+                MyCommoditydetailQueryResponse myCommoditydetailQueryResponse = JSON.parseObject(response.getBody(), MyCommoditydetailQueryResponse.class);
+                System.out.println(myCommoditydetailQueryResponse);
+            }
+            System.out.println("返回json/xml格式数据 :" + response.getBody());
+        } catch (
+                SuningApiException e) {
             e.printStackTrace();
         }
     }
