@@ -4,16 +4,17 @@
 package com.sdk.suning.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.suning.api.entity.netalliance.OrdersettlenewGetResponse;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * Auto-generated: 2021-02-05 17:53:57
+ * 由于苏宁 SDK 存在 bug，在响应结果的 body 中有内容，而 sn_body 中没有，所以需要我们自己解析 body 域中内容。
+ * 本类参考 {@link OrdersettlenewGetResponse}
  *
- * @author json.cn (i@json.cn)
- * @website http://www.json.cn/java2pojo/
+ * @author administrator
  */
 @Data
 public class MyOrdersettlenewGetResponse {

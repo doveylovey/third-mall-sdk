@@ -4,13 +4,14 @@
 package com.sdk.suning.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.suning.api.entity.netalliance.SearchcommodityQueryResponse;
 import lombok.Data;
 
 import java.util.List;
 
 /**
  * 由于苏宁 SDK 存在 bug，在响应结果的 body 中有内容，而 sn_body 中没有，所以需要我们自己解析 body 域中内容。
- * 本类参考 {@link com.suning.api.entity.netalliance.SearchcommodityQueryResponse}
+ * 本类参考 {@link SearchcommodityQueryResponse}
  *
  * @author administrator
  */
