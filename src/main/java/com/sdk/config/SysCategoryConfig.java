@@ -13,7 +13,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * 从外部 json 文件中读取商品类目信息
@@ -23,12 +27,12 @@ import java.util.Objects;
 @Slf4j
 @Data
 @Component
-public class CategoryConfig {
+public class SysCategoryConfig {
     @Value("classpath:category.json")
     private Resource resource;
     private StringBuilder readStr;
 
-    public List<ChannelInfo> getAllCategory() {
+    public List<ChannelInfo> getAllCategoryList() {
         try {
             if (Objects.isNull(this.readStr)) {
                 synchronized (this) {
@@ -49,5 +53,23 @@ public class CategoryConfig {
             log.error("读取 category.json 文件异常", e);
         }
         return Collections.EMPTY_LIST;
+    }
+
+    public Map<Integer, ChannelInfo> getAllCategoryMap() {
+        Map<Integer, ChannelInfo> map = new ConcurrentHashMap<>();
+        List<ChannelInfo> list = getAllCategoryList();
+        if (list != null && !list.isEmpty()) {
+            map = list.stream().collect(Collectors.toMap(ChannelInfo::getChannelId, Function.identity(), (key1, key2) -> key2));
+        }
+        return map;
+    }
+
+    public ChannelInfo getCategoryByChannelId(Integer channelId) {
+        ChannelInfo channelInfo = new ChannelInfo();
+        Map<Integer, ChannelInfo> map = getAllCategoryMap();
+        if (map != null && !map.isEmpty()) {
+            channelInfo = map.get(channelId);
+        }
+        return channelInfo;
     }
 }

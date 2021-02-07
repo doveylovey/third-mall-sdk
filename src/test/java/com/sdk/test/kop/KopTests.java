@@ -1,6 +1,9 @@
 package com.sdk.test.kop;
 
 import com.alibaba.fastjson.JSON;
+import com.sdk.common.domain.ChannelInfo;
+import com.sdk.common.enums.ChannelEnum;
+import com.sdk.common.util.SysCategoryInfo;
 import com.sdk.kop.enums.KopMethodEnum;
 import com.sdk.kop.request.KopGoodsInfoRequest;
 import com.sdk.kop.request.KopOrderInfoRequest;
@@ -26,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -55,6 +59,14 @@ public class KopTests {
             result.add(subList);
         }
         System.out.println(result);
+    }
+
+
+    @Test
+    public void goodsCategoryList() {
+        SysCategoryInfo sysCategoryInfo = new SysCategoryInfo();
+        ChannelInfo channelInfo = sysCategoryInfo.getCategoryByChannelId(ChannelEnum.KAO_LA.getChannelCode());
+        System.out.println(channelInfo);
     }
 
     @Test

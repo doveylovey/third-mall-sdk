@@ -1,13 +1,12 @@
 package com.sdk.common.controller;
 
 import com.sdk.common.domain.ChannelInfo;
-import com.sdk.config.CategoryConfig;
+import com.sdk.config.SysCategoryConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,17 +18,18 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestController {
     @Autowired
-    private CategoryConfig categoryConfig;
+    private SysCategoryConfig sysCategoryConfig;
 
     @RequestMapping("/all")
     public List<ChannelInfo> getAllCategory() {
-        List<ChannelInfo> allCategory = categoryConfig.getAllCategory();
+        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategoryList();
         return allCategory;
     }
 
     @RequestMapping("/one/{id}")
     public ChannelInfo getOneCategory(@PathVariable(name = "id", required = true) Integer id) {
-        List<ChannelInfo> allCategory = categoryConfig.getAllCategory();
+        //ChannelInfo channelInfo = sysCategoryConfig.getCategoryByChannelId(id);
+        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategoryList();
         for (ChannelInfo channelInfo : allCategory) {
             if (id.equals(channelInfo.getChannelId())) {
                 return channelInfo;

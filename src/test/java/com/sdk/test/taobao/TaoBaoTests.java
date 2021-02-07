@@ -5,7 +5,10 @@ import com.pdd.pop.sdk.http.api.pop.request.PddDdkGoodsDetailRequest;
 import com.pdd.pop.sdk.http.api.pop.request.PddDdkGoodsPromotionUrlGenerateRequest;
 import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsDetailResponse;
 import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsPromotionUrlGenerateResponse;
+import com.sdk.common.domain.ChannelInfo;
+import com.sdk.common.enums.ChannelEnum;
 import com.sdk.common.util.AESUtil;
+import com.sdk.common.util.SysCategoryInfo;
 import com.sdk.pdd.factory.PddClientFactory;
 import com.sdk.pdd.request.CustomParameter;
 import com.sdk.taobao.enums.TbCategory;
@@ -29,8 +32,10 @@ import java.util.concurrent.Future;
 
 public class TaoBaoTests {
     @Test
-    public void goodsCategoryList() throws Exception {
-        System.out.println("见配置文件");
+    public void goodsCategoryList() {
+        SysCategoryInfo sysCategoryInfo = new SysCategoryInfo();
+        ChannelInfo channelInfo = sysCategoryInfo.getCategoryByChannelId(ChannelEnum.TAO_BAO.getChannelCode());
+        System.out.println(channelInfo);
     }
 
     @Test
