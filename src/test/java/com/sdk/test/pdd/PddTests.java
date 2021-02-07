@@ -11,7 +11,7 @@ import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsSearchResponse;
 import com.pdd.pop.sdk.http.api.pop.response.PddGoodsCatsGetResponse;
 import com.sdk.pdd.constants.PddConstants;
 import com.sdk.pdd.factory.PddClientFactory;
-import com.sdk.pdd.request.CustomParmeter;
+import com.sdk.pdd.request.CustomParameter;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -113,7 +113,7 @@ public class PddTests {
     @Test
     public void shareLink() throws Exception {
         PddDdkGoodsPromotionUrlGenerateRequest request = new PddDdkGoodsPromotionUrlGenerateRequest();
-        CustomParmeter custom = new CustomParmeter();
+        CustomParameter custom = new CustomParameter();
         custom.setUid("用户标识");
         request.setCustomParameters(JSON.toJSONString(custom));
         List<Long> goodsIdList = new ArrayList<Long>() {{
