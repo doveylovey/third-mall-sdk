@@ -4,16 +4,20 @@ import com.alibaba.fastjson.JSON;
 import com.pdd.pop.sdk.http.api.pop.request.PddDdkGoodsDetailRequest;
 import com.pdd.pop.sdk.http.api.pop.request.PddDdkGoodsPromotionUrlGenerateRequest;
 import com.pdd.pop.sdk.http.api.pop.request.PddDdkGoodsSearchRequest;
+import com.pdd.pop.sdk.http.api.pop.request.PddDdkOrderListIncrementGetRequest;
 import com.pdd.pop.sdk.http.api.pop.request.PddGoodsCatsGetRequest;
 import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsDetailResponse;
 import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsPromotionUrlGenerateResponse;
 import com.pdd.pop.sdk.http.api.pop.response.PddDdkGoodsSearchResponse;
+import com.pdd.pop.sdk.http.api.pop.response.PddDdkOrderListIncrementGetResponse;
 import com.pdd.pop.sdk.http.api.pop.response.PddGoodsCatsGetResponse;
+import com.sdk.common.util.DatetimeUtils;
 import com.sdk.pdd.constants.PddConstants;
 import com.sdk.pdd.factory.PddClientFactory;
 import com.sdk.pdd.request.CustomParameter;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,8 +109,8 @@ public class PddTests {
         }};
         // goodList.size() > 1 报错：只支持单个goodsId查询
         request.setGoodsIdList(goodsIdList);
-        Future<PddDdkGoodsDetailResponse> asyncInvoke = PddClientFactory.popClient().asyncInvoke(request);
-        PddDdkGoodsDetailResponse response = asyncInvoke.get();
+        Future<PddDdkGoodsDetailResponse> future = PddClientFactory.popClient().asyncInvoke(request);
+        PddDdkGoodsDetailResponse response = future.get();
         System.out.println("响应结果：" + JSON.toJSONString(response));
     }
 
@@ -126,8 +130,23 @@ public class PddTests {
         request.setPId("11655235_154083742");
         request.setGenerateWeApp(true);
         request.setGenerateWeappWebview(true);
-        Future<PddDdkGoodsPromotionUrlGenerateResponse> asyncInvoke = PddClientFactory.popClient().asyncInvoke(request);
-        PddDdkGoodsPromotionUrlGenerateResponse response = asyncInvoke.get();
+        Future<PddDdkGoodsPromotionUrlGenerateResponse> future = PddClientFactory.popClient().asyncInvoke(request);
+        PddDdkGoodsPromotionUrlGenerateResponse response = future.get();
+        System.out.println("响应结果：" + JSON.toJSONString(response));
+    }
+
+    @Test
+    public void orderList() throws Exception {
+        PddDdkOrderListIncrementGetRequest request = new PddDdkOrderListIncrementGetRequest();
+        request.setPage(1);
+        request.setPageSize(50);
+        LocalDateTime now = LocalDateTime.now();
+        request.setStartUpdateTime(DatetimeUtils.getSeconds(now.minusMinutes(30)));
+        request.setEndUpdateTime(DatetimeUtils.getSeconds(now));
+        // 推广订单
+        request.setQueryOrderType(1);
+        Future<PddDdkOrderListIncrementGetResponse> future = PddClientFactory.popClient().asyncInvoke(request);
+        PddDdkOrderListIncrementGetResponse response = future.get();
         System.out.println("响应结果：" + JSON.toJSONString(response));
     }
 }

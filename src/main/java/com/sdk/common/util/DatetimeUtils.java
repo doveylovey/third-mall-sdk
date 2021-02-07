@@ -15,16 +15,22 @@ public class DatetimeUtils {
         throw new AssertionError("No com.sdk.common.util.DatetimeUtils instances for you!");
     }
 
+    public static String PATTERN_ALL_SPLIT = "yyyy-MM-dd HH:mm:ss";
+    public static String PATTERN_ALL = "yyyyMMddHHmmss";
+    public static String PATTERN_DATE_SPLIT = "yyyy-MM-dd";
+    public static String PATTERN_DATE = "yyyyMMdd";
+    public static String PATTERN_TIME_SPLIT = "HH:mm:ss";
+
     /**
      * 将指定日期时间格式化成 yyyy-MM-dd HH:mm:ss 形式
      *
      * @return
      */
-    public static String getFormatDateTime(LocalDateTime localDateTime) {
+    public static String getFormatDateTime(LocalDateTime localDateTime, String pattern) {
         /*String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String time = localDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         String datetime1 = date + time;*/
-        String datetime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String datetime = localDateTime.format(DateTimeFormatter.ofPattern(pattern));
         return datetime;
     }
 
@@ -33,8 +39,8 @@ public class DatetimeUtils {
      *
      * @return
      */
-    public static LocalDateTime str2DateTime(String string) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static LocalDateTime str2DateTime(String string, String pattern) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return LocalDateTime.parse(string, formatter);
     }
 
