@@ -50,7 +50,7 @@ public class MediaTests {
     }
 
     @Test
-    public void ShareLink() throws Exception {
+    public void shareLink() throws Exception {
         String serviceName = "cps-mesh.cpslink.links.post";
         String goodsDetailServiceName = "cps-mesh.cpslink.media.products.detail";
         Map<String, Object> param = new HashMap<>();
