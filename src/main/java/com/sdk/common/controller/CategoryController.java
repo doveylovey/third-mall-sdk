@@ -15,21 +15,21 @@ import java.util.List;
  * @author Administrator
  */
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/category")
+public class CategoryController {
     @Autowired
     private SysCategoryConfig sysCategoryConfig;
 
     @RequestMapping("/all")
     public List<ChannelInfo> getAllCategory() {
-        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategoryList();
+        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategory();
         return allCategory;
     }
 
     @RequestMapping("/one/{id}")
     public ChannelInfo getOneCategory(@PathVariable(name = "id", required = true) Integer id) {
         //ChannelInfo channelInfo = sysCategoryConfig.getCategoryByChannelId(id);
-        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategoryList();
+        List<ChannelInfo> allCategory = sysCategoryConfig.getAllCategory();
         for (ChannelInfo channelInfo : allCategory) {
             if (id.equals(channelInfo.getChannelId())) {
                 return channelInfo;

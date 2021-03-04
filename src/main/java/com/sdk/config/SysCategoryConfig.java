@@ -32,7 +32,7 @@ public class SysCategoryConfig {
     private Resource resource;
     private StringBuilder readStr;
 
-    public List<ChannelInfo> getAllCategoryList() {
+    public List<ChannelInfo> getAllCategory() {
         try {
             if (Objects.isNull(this.readStr)) {
                 synchronized (this) {
@@ -57,7 +57,7 @@ public class SysCategoryConfig {
 
     public Map<Integer, ChannelInfo> getAllCategoryMap() {
         Map<Integer, ChannelInfo> map = new ConcurrentHashMap<>();
-        List<ChannelInfo> list = getAllCategoryList();
+        List<ChannelInfo> list = getAllCategory();
         if (list != null && !list.isEmpty()) {
             map = list.stream().collect(Collectors.toMap(ChannelInfo::getChannelId, Function.identity(), (key1, key2) -> key2));
         }
