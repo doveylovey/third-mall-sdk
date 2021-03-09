@@ -159,10 +159,10 @@ public class SuningCommodityTests {
         // 推广商品详情信息接口
         CommoditydetailQueryRequest request = new CommoditydetailQueryRequest();
         //request.setCityCode("025");
-        request.setCommodityStr("12199227363-0070845864");
+        request.setCommodityStr("12122934701-0000000000");
         request.setCouponMark("1");
-        request.setPicHeight("200");
-        request.setPicWidth("200");
+        request.setPicHeight("750");
+        request.setPicWidth("750");
         //api入参校验逻辑开关，当测试稳定之后建议设置为 false 或者删除该行
         request.setCheckParam(true);
         try {
